@@ -8,7 +8,7 @@ from constants import *
 youtube_list = []
 
 def download(i, pth):
-    os.system('youtube-dl -x --audio-format wav -o "{}{}.%(ext)s" {}'.format(AUDIO_PATH, i, pth))
+    os.system('youtube-dl -x --audio-format mp3 -o "{}{}.%(ext)s" {}'.format(AUDIO_PATH, i, pth))
 
 def main():
     with open(YOUTUBE_FILE_PATH, 'rt') as f:

@@ -11,6 +11,10 @@ def separate(dirs):
         os.system("spleeter separate -i {}{} -p spleeter:2stems -o {}".format(AUDIO_PATH, dirs, SEPARATE_PATH))
 
 def main():
+    if not os.path.isdir(AUDIO_PATH):
+        os.makedirs(AUDIO_PATH, 0o755)
+    if not os.path.isdir(SEPARATE_PATH):
+        os.makedirs(SEPARATE_PATH, 0o755)
     with parallel_backend('multiprocessing', n_jobs=4):
         Parallel()(delayed(separate)(dirs) for dirs in os.listdir(AUDIO_PATH))
 
